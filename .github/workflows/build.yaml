@@ -16,5 +16,4 @@ jobs:
       - name: Build
         uses: docker/build-push-action@v4
         with:
-          push: false
           tags: ${{ github.repository_owner }}/keycloak:latest
