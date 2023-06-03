@@ -1,6 +1,9 @@
 # The InformaticsMatters keycloak container image
 
+![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/informaticsmatters/docker-keycloak)
+
 [![build](https://github.com/InformaticsMatters/docker-keycloak/actions/workflows/build.yaml/badge.svg)](https://github.com/InformaticsMatters/docker-keycloak/actions/workflows/build.yaml)
+[![tag](https://github.com/InformaticsMatters/docker-keycloak/actions/workflows/tag.yaml/badge.svg)](https://github.com/InformaticsMatters/docker-keycloak/actions/workflows/tag.yaml)
 
 A specialised build of keycloak used by a number of InformaticsMatters projects.
 
