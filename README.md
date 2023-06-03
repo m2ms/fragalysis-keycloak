@@ -1,5 +1,7 @@
 # The InformaticsMatters keycloak container image
 
+[![build](https://github.com/InformaticsMatters/docker-keycloak/actions/workflows/build.yaml/badge.svg)](https://github.com/InformaticsMatters/docker-keycloak/actions/workflows/build.yaml)
+
 A specialised build of keycloak used by a number of InformaticsMatters projects.
 
 Refer to to the keycloak [container documentation] for background information.
