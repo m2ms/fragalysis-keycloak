@@ -1,5 +1,5 @@
 ---
-name: tag
+name: release
 
 # -----------------
 # Control variables (GitHub Secrets)
@@ -18,9 +18,9 @@ name: tag
 # Environment         (none)
 
 on:
-  push:
-    tags:        
-      - '*'
+  release:
+    types:
+    - published
 
 jobs:
   build:
