@@ -5,6 +5,9 @@ on:
   push:
     tags-ignore:
       - '*'
+  schedule:
+  # Weekly build at 20:55 on Sundays
+  - cron: 55 20 * * SUN
 
 jobs:
   build:
