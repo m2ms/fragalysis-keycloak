@@ -38,8 +38,9 @@ ENV KC_HOSTNAME_STRICT=false
 # - KC_DB_PASSWORD
 # - KEYCLOAK_ADMIN_PASSWORD
 
-ENTRYPOINT \
-    "/opt/keycloak/bin/kc.sh" \
-    " start" \
-    " --optimized" \
-    " --spi-login-protocol-openid-connect-legacy-logout-redirect-uri=true"
+ENTRYPOINT [ \
+    "/opt/keycloak/bin/kc.sh", \
+    "start", \
+    "--optimized", \
+    "--spi-login-protocol-openid-connect-legacy-logout-redirect-uri=true" \
+    ]
