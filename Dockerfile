@@ -1,4 +1,4 @@
-ARG KEYCLOAK_VERSION=21.1.2
+ARG KEYCLOAK_VERSION=23.0.3
 FROM quay.io/keycloak/keycloak:$KEYCLOAK_VERSION as builder
 
 # See https://www.keycloak.org/server/containers
