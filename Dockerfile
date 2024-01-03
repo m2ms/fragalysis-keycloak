@@ -28,6 +28,9 @@ FROM quay.io/keycloak/keycloak:$KEYCLOAK_VERSION
 COPY --from=builder /opt/keycloak/ /opt/keycloak/
 
 # Our built-in defaults
+# This assumes we are using a postgres database
+# and there's one available (a Service) called database.
+# The username and datadase name are both keycloak
 ENV KC_DB=postgres
 ENV KC_DB_URL=jdbc:postgresql://database/keycloak
 ENV KC_DB_USERNAME=keycloak
