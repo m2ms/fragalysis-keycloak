@@ -39,11 +39,11 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Fix repository name
         id: repo_name
-        uses: ASzc/change-string-case-action@v5
+        uses: ASzc/change-string-case-action@v6
         with:
           string: ${{ github.repository_owner }}
       - name: Build
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           push: true
           tags: ${{ steps.repo_name.outputs.lowercase }}/keycloak:${{ github.ref_name }}

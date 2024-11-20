@@ -15,9 +15,9 @@ To build and push using the currently endorsed keyclock base image...
     docker build . -t informaticsmatters/keycloak:stable
     docker push informaticsmatters/keycloak:stable
 
-To build and push using a specific keycloak base image, like `18.0.0`...
+To build and push using a specific keycloak base image, like `26.0.5`...
 
-    KEYCLOAK_VERSION=18.0.0
+    KEYCLOAK_VERSION=26.0.5
     docker build . -t informaticsmatters/keycloak:${KEYCLOAK_VERSION} \
         --build-arg KEYCLOAK_VERSION=${KEYCLOAK_VERSION}
     docker push informaticsmatters/keycloak:${KEYCLOAK_VERSION}
