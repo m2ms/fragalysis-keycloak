@@ -30,14 +30,14 @@ COPY --from=builder /opt/keycloak/ /opt/keycloak/
 # Our built-in defaults
 # This assumes we are using a postgres database
 # and there's one available (a Service) called database.
-# The username and datadase name are both keycloak
+# The username and database name are both keycloak
 ENV KC_DB=postgres
 ENV KC_DB_URL=jdbc:postgresql://database/keycloak
 ENV KC_DB_USERNAME=keycloak
 ENV KC_PROXY=edge
 ENV KEYCLOAK_ADMIN=admin
 ENV KC_HOSTNAME_STRICT=false
-# At run-time set the folllowing: -
+# At run-time set the following: -
 # - KC_DB_PASSWORD
 # - KEYCLOAK_ADMIN_PASSWORD
 
