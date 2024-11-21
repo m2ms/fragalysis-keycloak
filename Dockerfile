@@ -27,14 +27,17 @@ RUN /opt/keycloak/bin/kc.sh build
 FROM quay.io/keycloak/keycloak:$KEYCLOAK_VERSION
 COPY --from=builder /opt/keycloak/ /opt/keycloak/
 
-# Our built-in defaults
-# This assumes we are using a postgres database
-# and there's one available (a Service) called database.
-# The username and database name are both keycloak
+# Our configuration over-rides. For a comprehensive list of all configuration options
+# see https://www.keycloak.org/server/all-config#category-hostname_v2.
+#
+# We use a postgres database where the database is called 'keycloak'.
+# The DB URL is in our namespace, on a Service called database,
+# and the username/owner is 'keycloak'.
+# The user is expected to provide the keycloak hostname
+#
 ENV KC_DB=postgres
 ENV KC_DB_URL=jdbc:postgresql://database/keycloak
 ENV KC_DB_USERNAME=keycloak
-ENV KC_HOSTNAME_STRICT=false
 ENV KC_PROXY_HEADERS=xforwarded
 ENV KEYCLOAK_ADMIN=admin
 # If we set this we can debug hostname issues
@@ -42,6 +45,7 @@ ENV KEYCLOAK_ADMIN=admin
 #ENV KC_HOSTNAME_DEBUG=true
 
 # At run-time we expect and set the following: -
+# - KC_HOSTNAME (e.g. keycloak.example.com)
 # - KC_DB_PASSWORD
 # - KEYCLOAK_ADMIN_PASSWORD
 
