@@ -53,7 +53,6 @@ COPY --from=builder /opt/keycloak/ /opt/keycloak/
 ENV KC_DB=postgres
 ENV KC_DB_URL=jdbc:postgresql://database/keycloak
 ENV KC_DB_USERNAME=keycloak
-ENV KC_HOSTNAME_STRICT=false
 ENV KC_HEALTH_ENABLED=true
 ENV KC_METRICS_ENABLED=true
 ENV KC_PROXY_HEADERS=xforwarded
@@ -68,6 +67,7 @@ ENV KC_PROXY=edge
 ENV KEYCLOAK_ADMIN=admin
 
 # At run-time set the following: -
+# - KC_HOSTNAME
 # - KC_DB_PASSWORD
 # - KEYCLOAK_ADMIN_PASSWORD
 
