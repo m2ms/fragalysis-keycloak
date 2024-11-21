@@ -30,7 +30,6 @@ ENV KC_METRICS_ENABLED=true
 # By default, the new Quarkus distribution removes /auth from the context-path.
 # Restore it with KC_HTTP_RELATIVE_PATH
 ENV KC_HTTP_RELATIVE_PATH=/auth
-ENV KC_PROXY_HEADERS=xforwarded
 # Configure a database vendor
 ENV KC_DB=postgres
 
@@ -54,15 +53,19 @@ COPY --from=builder /opt/keycloak/ /opt/keycloak/
 ENV KC_DB=postgres
 ENV KC_DB_URL=jdbc:postgresql://database/keycloak
 ENV KC_DB_USERNAME=keycloak
-#ENV KC_PROXY=edge
-ENV KC_PROXY_HEADERS=xforwarded
 ENV KC_HOSTNAME_STRICT=false
 ENV KC_HEALTH_ENABLED=true
 ENV KC_METRICS_ENABLED=true
-ENV KEYCLOAK_ADMIN=admin
+ENV KC_PROXY_HEADERS=xforwarded
+# The following has (allegedly) been removed
+# but we cannot run keycloak without connection refused issues
+# onm the probes without setting it
+ENV KC_PROXY=edge
 # If we set this we can debug hostname issues
 # Using the expected hostname at <HOSTNAME>/auth/realms/master/hostname-debug/
 #ENV KC_HOSTNAME_DEBUG=true
+
+ENV KEYCLOAK_ADMIN=admin
 
 # At run-time set the following: -
 # - KC_DB_PASSWORD
