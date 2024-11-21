@@ -7,10 +7,6 @@ FROM quay.io/keycloak/keycloak:$KEYCLOAK_VERSION as builder
 # Refer to https://www.keycloak.org/server/all-config
 # for a complete lits of all built options and confoguration for keycloak
 
-# Enable health and metrics support
-ENV KC_HEALTH_ENABLED=true
-ENV KC_METRICS_ENABLED=true
-
 # By default, the new Quarkus distribution removes /auth from the context-path.
 # Restore it with KC_HTTP_RELATIVE_PATH
 ENV KC_HTTP_RELATIVE_PATH=/auth
@@ -38,8 +34,11 @@ COPY --from=builder /opt/keycloak/ /opt/keycloak/
 ENV KC_DB=postgres
 ENV KC_DB_URL=jdbc:postgresql://database/keycloak
 ENV KC_DB_USERNAME=keycloak
-ENV KC_HOSTNAME_STRICT=false
+ENV KC_PROXY=edge
 ENV KEYCLOAK_ADMIN=admin
+ENV KC_HOSTNAME_STRICT=false
+ENV KC_HEALTH_ENABLED=true
+ENV KC_METRICS_ENABLED=true
 # If we set this we can debug hostname issues
 # Using the expected hostname at <HOSTNAME>/auth/realms/master/hostname-debug/
 #ENV KC_HOSTNAME_DEBUG=true
