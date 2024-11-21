@@ -7,6 +7,11 @@ FROM quay.io/keycloak/keycloak:$KEYCLOAK_VERSION as builder
 # Refer to https://www.keycloak.org/server/all-config
 # for a complete lits of all built options and confoguration for keycloak
 
+# Enable health and metrics support
+# We do this as a build-time option (and set the variables in the final image later)
+ENV KC_HEALTH_ENABLED=true
+ENV KC_METRICS_ENABLED=true
+
 # By default, the new Quarkus distribution removes /auth from the context-path.
 # Restore it with KC_HTTP_RELATIVE_PATH
 ENV KC_HTTP_RELATIVE_PATH=/auth
