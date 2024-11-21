@@ -38,15 +38,14 @@ COPY --from=builder /opt/keycloak/ /opt/keycloak/
 ENV KC_DB=postgres
 ENV KC_DB_URL=jdbc:postgresql://database/keycloak
 ENV KC_DB_USERNAME=keycloak
-ENV KC_HOSTNAME_STRICT=false
-ENV KC_PROXY_HEADERS=xforwarded
+ENV KC_PROXY=edge
 ENV KEYCLOAK_ADMIN=admin
+ENV KC_HOSTNAME_STRICT=false
 # If we set this we can debug hostname issues
 # Using the expected hostname at <HOSTNAME>/auth/realms/master/hostname-debug/
 #ENV KC_HOSTNAME_DEBUG=true
 
-# At run-time we expect and set the following: -
-# - KC_HOSTNAME (e.g. keycloak.example.com)
+# At run-time set the following: -
 # - KC_DB_PASSWORD
 # - KEYCLOAK_ADMIN_PASSWORD
 
