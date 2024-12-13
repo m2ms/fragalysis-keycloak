@@ -22,6 +22,15 @@ To build and push using a specific keycloak base image, like `26.0.5`...
         --build-arg KEYCLOAK_VERSION=${KEYCLOAK_VERSION}
     docker push informaticsmatters/keycloak:${KEYCLOAK_VERSION}
 
+## Theme development
+A docker compose file is provided to allow you to run a keycloak instance
+with a database and a volume mounted for theme development. The compose file
+will start a keycloak instance with a postgres database. For further information
+and basic instruction on getting started read the comments inside the
+theme development docker compose file: -
+
+- docker-compose-theme-development.yaml
+
 ---
 
 [container documentation]: https://www.keycloak.org/server/containers
