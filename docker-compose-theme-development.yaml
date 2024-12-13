@@ -1,10 +1,10 @@
 ---
 
-# An experimental docker-compose file.
+# An experimental docker-compose file to simplify theme development.
 # Use this to deploy a database and the keycloak image: -
 #
-#   docker compose build
-#   docker compose up -d
+#   docker compose -f docker-compose-theme-development.yaml build
+#   docker compose -f docker-compose-theme-development.yaml up -d
 #
 # 'keycloak.local' is the hostname used by the keycloak image
 # so make sure your '/etc/hosts' file has an entry to allow routing
@@ -15,10 +15,15 @@
 # You can then navigate to keycloak at http://keycloak.local:8080
 # where you should be able to login as 'admin' with the password 'blob111'.
 #
+# The project 'themes' directory is mounted into the container
+# at '/opt/keycloak/themes'. This allows you to develop themes
+# and modify the theme from outside the container and see the
+# result without having to rebuild the container.
+#
 # The database is mounted into the local directory './data'.
 # To reset the database shutdown the service and remove the data directory: -
 #
-#   docker compose down
+#   docker compose -f docker-compose-theme-development.yaml down
 #   rm -rf data
 
 services:
