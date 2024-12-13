@@ -31,6 +31,10 @@ theme development docker compose file: -
 
 - docker-compose-theme-development.yaml
 
+And, for instructions on how to develop themes, read the
+[Keycloak theme development] documentation.
+
 ---
 
 [container documentation]: https://www.keycloak.org/server/containers
+[keycloak theme development]: https://www.keycloak.org/docs/latest/server_development/index.html#_themes
