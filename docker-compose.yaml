@@ -1,0 +1,62 @@
+---
+
+# An experimental docker-compose file.
+# Use this to deploy a database and the keycloak image: -
+#
+#   docker compose build
+#   docker compose up
+#
+# 'keycloak.local' is the hostname used by the keycloak image
+# so make sure your '/etc/hosts' file has an entry to allow routing
+# to your local docker engine, typically: -
+#
+#   127.0.0.1 keycloak.local
+#
+# You can then navigate to keycloak at http://keycloak.local:8080
+# where you should be able to login as 'admin' with the password 'blob111'.
+#
+# The database is mounted into the local directory './data'.
+# To reset the database shutdown the service and remove the data directory: -
+#
+#   docker compose down
+#   rm -rf data
+
+services:
+
+  # Our keycloak container image expects a PostgreSQL database
+  # with a database called 'keycloak' and a 'keycloak' user.
+  database:
+    image: postgres:15.10-alpine
+    container_name: database
+    volumes:
+    - ./data/postgresql/data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: blob888
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+    - "5432:5432"
+    healthcheck:
+      test: pg_isready -U postgres -d keycloak
+      interval: 10s
+      timeout: 2s
+      retries: 5
+      start_period: 10s
+
+  keycloak:
+    image: informaticsmatters/keycloak:${KC_IMAGE_TAG:-latest}
+    container_name: keycloak
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      KEYCLOAK_ADMIN_PASSWORD: blob111
+      KC_DB_PASSWORD: blob888
+      KC_HOSTNAME: keycloak.local
+    ports:
+    - "8080:8080"
+    - "8443:8443"
+    - "9000:9000"
+    depends_on:
+      database:
+        condition: service_healthy
