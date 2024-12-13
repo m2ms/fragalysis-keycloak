@@ -4,7 +4,7 @@
 # Use this to deploy a database and the keycloak image: -
 #
 #   docker compose build
-#   docker compose up
+#   docker compose up -d
 #
 # 'keycloak.local' is the hostname used by the keycloak image
 # so make sure your '/etc/hosts' file has an entry to allow routing
@@ -45,7 +45,13 @@ services:
 
   keycloak:
     image: informaticsmatters/keycloak:${KC_IMAGE_TAG:-latest}
+    command: >
+      --spi-theme-static-max-age=-1
+      --spi-theme-cache-themes=false
+      --spi-theme-cache-templates=false
     container_name: keycloak
+    volumes:
+    - ./themes:/opt/keycloak/themes
     build:
       context: .
       dockerfile: Dockerfile

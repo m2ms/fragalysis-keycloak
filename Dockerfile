@@ -66,6 +66,9 @@ ENV KC_PROXY=edge
 
 ENV KEYCLOAK_ADMIN=admin
 
+# Copy themes into the image
+COPY themes/ /opt/keycloak/themes/
+
 # At run-time set the following: -
 # - KC_HOSTNAME
 # - KC_DB_PASSWORD
