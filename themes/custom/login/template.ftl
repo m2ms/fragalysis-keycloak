@@ -140,8 +140,14 @@
         </#if>
       </div>
 
-	  <div class="pf-v5-c-login__main-footer">
+      <div class="pf-v5-c-login__main-footer">
         <#nested "socialProviders">
+        <div class="pf-v5-c-login__main-footer-band">
+          <p class="pf-v5-c-login__main-footer-band-item">
+              <#-- ${msg("identity-provider-login-label")} -->
+              ${msg("custom-keycloak-login-label")}...
+          </p>
+        </div>
       </div>
 
       <div class="${properties.kcLoginMainBody!} hidden">

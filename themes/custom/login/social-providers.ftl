@@ -96,10 +96,4 @@
           </#list>
       </ul>
   </div>
-  <div class="pf-v5-c-login__main-footer-band">
-      <p class="pf-v5-c-login__main-footer-band-item">
-          <#-- ${msg("identity-provider-login-label")} -->
-          ${msg("custom-keycloak-login-label")}...
-      </p>
-  </div>
 </#macro>
