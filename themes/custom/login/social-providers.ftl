@@ -1,9 +1,4 @@
 <#macro show social>
-  <div class="pf-v5-c-login__main-footer-band">
-      <p class="pf-v5-c-login__main-footer-band-item">
-          ${msg("identity-provider-login-label")}
-      </p>
-  </div>
   <div id="kc-social-providers" class="${properties.kcFormSocialAccountSectionClass!}">
       <ul class="${properties.kcFormSocialAccountListClass!} <#if social.providers?size gt 3>${properties.kcFormSocialAccountListGridClass!}</#if>">
           <#list social.providers as p>
@@ -100,5 +95,11 @@
               </li>
           </#list>
       </ul>
+  </div>
+  <div class="pf-v5-c-login__main-footer-band">
+      <p class="pf-v5-c-login__main-footer-band-item">
+          <#-- ${msg("identity-provider-login-label")} -->
+          ${msg("custom-keycloak-login-label")}...
+      </p>
   </div>
 </#macro>

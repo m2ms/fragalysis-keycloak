@@ -12,7 +12,7 @@
         </span>
       </div>
       <div class="${properties.kcInputGroupItemClass}">
-        <button id="reset-login" class="${properties.kcFormPasswordVisibilityButtonClass} kc-login-tooltip" type="button" 
+        <button id="reset-login" class="${properties.kcFormPasswordVisibilityButtonClass} kc-login-tooltip" type="button"
               aria-label="${msg('restartLoginTooltip')}" onclick="location.href='${url.loginRestartFlowUrl}'">
             <i class="fa-sync-alt fas" aria-hidden="true"></i>
             <span class="kc-tooltip-text">${msg("restartLoginTooltip")}</span>
@@ -139,7 +139,12 @@
         </div>
         </#if>
       </div>
-      <div class="${properties.kcLoginMainBody!}">
+
+	  <div class="pf-v5-c-login__main-footer">
+        <#nested "socialProviders">
+      </div>
+
+      <div class="${properties.kcLoginMainBody!} hidden">
         <#if !(auth?has_content && auth.showUsername() && !auth.showResetCredentials())>
             <#if displayRequiredFields>
                 <div class="${properties.kcContentWrapperClass!}">
@@ -204,9 +209,6 @@
               </div>
           </div>
         </#if>
-      </div>
-      <div class="pf-v5-c-login__main-footer">
-        <#nested "socialProviders">
       </div>
     </main>
 
