@@ -1,0 +1,19 @@
+.hidden {
+    display: none;
+}
+
+.highlight {
+    margin-bottom: 20px;
+
+}
+.highlight:hover {
+    cursor: pointer;
+
+}
+.highlight a {
+    color: white;
+}
+
+.pf-v5-c-login__main-footer-band:hover {
+    cursor: pointer;
+}

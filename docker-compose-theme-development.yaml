@@ -32,7 +32,7 @@ services:
   # with a database called 'keycloak' and a 'keycloak' user.
   database:
     image: postgres:15.10-alpine
-    container_name: database
+    container_name: database-keycloak
     volumes:
     - ./data/postgresql/data:/var/lib/postgresql/data
     environment:
@@ -42,7 +42,7 @@ services:
     ports:
     - "5432:5432"
     healthcheck:
-      test: pg_isready -U postgres -d keycloak
+      test: pg_isready -U keycloak -d postgres
       interval: 10s
       timeout: 2s
       retries: 5
@@ -64,6 +64,8 @@ services:
       KEYCLOAK_ADMIN_PASSWORD: blob111
       KC_DB_PASSWORD: blob888
       KC_HOSTNAME: keycloak.local
+      # painless for windows
+      # KC_HOSTNAME: 127.0.0.1
     ports:
     - "8080:8080"
     - "8443:8443"

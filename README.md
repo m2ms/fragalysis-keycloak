@@ -9,6 +9,9 @@ A specialised build of keycloak used by a number of InformaticsMatters projects.
 
 Refer to to the keycloak [container documentation] for background information.
 
+## Custom theme settings
+To highlight an identitiy provider link and show it as a button suffix its alias with `-highlight` or name the alias as `diamond`
+
 ## Building and pushing
 To build and push using the currently endorsed keyclock base image...
 
