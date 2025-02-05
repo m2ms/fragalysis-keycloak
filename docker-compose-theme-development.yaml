@@ -49,7 +49,7 @@ services:
       start_period: 10s
 
   keycloak:
-    image: informaticsmatters/keycloak:${KC_IMAGE_TAG:-latest}
+    image: xchem/keycloak:${KC_IMAGE_TAG:-latest}
     command: >
       --spi-theme-static-max-age=-1
       --spi-theme-cache-themes=false
