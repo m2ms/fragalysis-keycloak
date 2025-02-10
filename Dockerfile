@@ -1,5 +1,5 @@
 ARG KEYCLOAK_VERSION=26.0.5
-FROM quay.io/keycloak/keycloak:$KEYCLOAK_VERSION as builder
+FROM quay.io/keycloak/keycloak:$KEYCLOAK_VERSION AS builder
 
 # See https://www.keycloak.org/server/containers
 # For Dockerfile and build documentation
@@ -68,6 +68,11 @@ ENV KEYCLOAK_ADMIN=admin
 
 # Copy themes into the image
 COPY themes/ /opt/keycloak/themes/
+# And change the ownership
+# keycloak has been found to be ID 1000
+USER root
+RUN chown -R keycloak:root /opt/keycloak/themes/
+USER keycloak
 
 # At run-time set the following: -
 # - KC_HOSTNAME
